@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 29
+names: ['leaf', 'leaf1', 'leaf10', 'leaf11', 'leaf12', 'leaf13', 'leaf14', 'leaf15', 'leaf2', 'leaf3', 'leaf4', 'leaf5', 'leaf6', 'leaf7', 'leaf8', 'leaf9', 'root', 'root1', 'root2', 'root3', 'root4', 'root5', 'root6', 'stem', 'stem1', 'stem2', 'stem3', 'stem4', 'stem5']
+
+roboflow:
+  workspace: plant-segmentation-2qnor
+  project: segmentation-plants
+  version: 1
+  license: MIT
+  url: https://universe.roboflow.com/plant-segmentation-2qnor/segmentation-plants/dataset/1
