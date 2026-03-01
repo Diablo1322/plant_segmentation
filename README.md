@@ -4,7 +4,6 @@ Plant Segmentation - README
 Модель определяет каждый лист отдельно, считает длину корня/стебля и площадь всех частей.
 
 📁 Структура репозитория
-text
 plant_segmentation/
 
 │
@@ -31,7 +30,6 @@ plant_segmentation/
 
 🚀 Быстрый старт
 1. Установка
-bash
 # клонируем репозиторий
 git clone https://github.com/your-repo/plant_segmentation.git
 cd plant_segmentation
@@ -50,14 +48,17 @@ pip install -r requirements.txt
 2. Подготовка данных
 Создай вручную папку data и внутри неё:
 
-text
 data/
+
 ├── raw/           # сюда кладёшь все фото для обучения (пшеница + руккола)
+
 ├── calibrated/    # сюда кладёшь фото шахматки (calib_1.jpg ... calib_18.jpg)
+
 ├── input/         # сюда будут кидать фото для обработки (создастся автоматом)
+
 └── output/        # сюда будут ложиться результаты (создастся автоматом)
+
 3. Калибровка камеры
-bash
 python src/calibrate.py
 Программа найдёт все фото шахматки, усреднит результаты и создаст файл calibration.json в корне проекта.
 
@@ -113,20 +114,22 @@ leaf - лист
 
 Структура после распаковки:
 
-text
 roboflow/
+
 ├── train/
+
 ├── valid/
+
 ├── test/
+
 └── data.yaml
+
 🧠 Обучение модели
 1. Проверь видеокарту (опционально)
-bash
 python -c "import torch; print(torch.cuda.is_available())"
 Если False - будет учиться на процессоре (очень долго).
 
 2. Запусти обучение
-bash
 python src/train.py
 Параметры (можно менять в train.py):
 
@@ -141,15 +144,12 @@ imgsz=640 - размер картинки (уменьши до 320 если ма
 3. Где результат
 После обучения модель сохранится в:
 
-text
 runs/segment/plant_segmentation/wheat_rocket/weights/best.pt
 Скопируй её в папку models/:
 
-bash
 copy runs\segment\plant_segmentation\wheat_rocket\weights\best.pt models\
 🤖 Автоматическая обработка
 1. Запусти watcher
-bash
 python src/watcher.py
 Программа будет следить за папкой data/input/.
 
@@ -165,18 +165,24 @@ photo.json - результаты измерений
 all_results.csv - общая таблица (обновляется)
 
 3. Структура папок после обработки
-text
 data/
+
 ├── input/
+
 │   ├── done/       # обработанные фото (перемещаются сюда)
+
 │   └── errors/     # фото с ошибками
+
 └── output/
+
     ├── vis_*.jpg   # визуализации
+    
     ├── *.json      # результаты по каждому фото
+    
     └── all_results.csv
+    
 📊 Формат результатов
 JSON для одного фото:
-json
 {
   "image_name": "wheat_001.jpg",
   "root": {
@@ -202,7 +208,6 @@ wheat_001.jpg	45.23	12.45	23.67	8.91	5	156.34
 Если мало видеопамяти
 В train.py уменьши:
 
-python
 imgsz=320,     # вместо 640
 batch=4,       # вместо 16
 Если модель ничего не находит
@@ -231,7 +236,6 @@ all_results.csv - общая таблица
 🐛 Возможные проблемы
 Ошибка: "No module named 'cv2'"
 
-bash
 pip install opencv-python
 Ошибка: "CUDA out of memory"
 Уменьши batch и imgsz в train.py
