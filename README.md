@@ -6,17 +6,29 @@ Plant Segmentation - README
 📁 Структура репозитория
 text
 plant_segmentation/
+
 │
+
 ├── src/
+
 │   ├── calibrate.py      # калибровка камеры по шахматке
+
 │   ├── train.py          # обучение модели
+
 │   ├── predict.py        # класс для измерений
+
 │   ├── utils.py          # вспомогательные функции
+
 │   └── watcher.py        # автоматическая обработка новых фото
+
 │
+
 ├── models/               # сюда сохраняются обученные модели
+
 ├── requirements.txt      # зависимости
+
 └── README.md
+
 🚀 Быстрый старт
 1. Установка
 bash
