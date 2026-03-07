@@ -20,6 +20,7 @@ def train_segmentation_model(data_yaml_path, model_size='n'):
         patience=20,  # если 20 эпох нет улучшений - останавливаем
         save=True,  # сохранять лучшую модель
         project='plant_segmentation',  # папка для сохранения
+        mask_ratio=2, # для тонких объектов (типа листьев пшеницы)
         name='wheat_rocket',  # имя эксперимента
         exist_ok=True,  # перезаписывать если папка уже есть
         pretrained=True,  # использовать предобученные веса

@@ -32,7 +32,7 @@ freeze: null
 multi_scale: 0.0
 compile: false
 overlap_mask: true
-mask_ratio: 4
+mask_ratio: 2
 dropout: 0.0
 val: true
 split: val
